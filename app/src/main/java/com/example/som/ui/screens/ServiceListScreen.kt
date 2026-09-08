@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -50,7 +51,8 @@ fun ServiceListScreen(
             onValueChange = viewModel::onSearchQueryChange,
             modifier = Modifier.fillMaxWidth(),
             label = { Text("Search services") },
-            singleLine = true
+            singleLine = true,
+            shape = RoundedCornerShape(24.dp)
         )
         when (val currentState = state) {
             ServiceListState.Loading -> ScreenMessage { CircularProgressIndicator() }

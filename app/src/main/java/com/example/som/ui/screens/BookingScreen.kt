@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -56,6 +57,7 @@ private fun BookingForm(state: BookingUiState, viewModel: BookingViewModel, onBa
         onValueChange = viewModel::onNameChange,
         modifier = Modifier.fillMaxWidth(),
         label = { Text("Customer name") },
+        shape = RoundedCornerShape(24.dp),
         isError = "customerName" in state.fieldErrors,
         supportingText = { state.fieldErrors["customerName"]?.let { Text(it) } }
     )
@@ -64,6 +66,7 @@ private fun BookingForm(state: BookingUiState, viewModel: BookingViewModel, onBa
         onValueChange = viewModel::onContactChange,
         modifier = Modifier.fillMaxWidth(),
         label = { Text("Phone or email") },
+        shape = RoundedCornerShape(24.dp),
         isError = "contact" in state.fieldErrors,
         supportingText = { state.fieldErrors["contact"]?.let { Text(it) } }
     )
@@ -72,6 +75,7 @@ private fun BookingForm(state: BookingUiState, viewModel: BookingViewModel, onBa
         onValueChange = viewModel::onAddressChange,
         modifier = Modifier.fillMaxWidth(),
         label = { Text("Service address") },
+        shape = RoundedCornerShape(24.dp),
         isError = "address" in state.fieldErrors,
         supportingText = { state.fieldErrors["address"]?.let { Text(it) } }
     )
