@@ -5,21 +5,29 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.som.ui.screens.ServiceListScreen
+import com.example.som.data.mock.MockSomApiService
+import com.example.som.data.repository.ServiceRepository
+import com.example.som.navigation.AppNavigation
 import com.example.som.ui.theme.SomTheme
 
 class MainActivity : ComponentActivity() {
+    private val repository by lazy { ServiceRepository(MockSomApiService()) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ServiceListScreen()
+            SomTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    AppNavigation(repository)
+                }
+            }
         }
     }
 }
